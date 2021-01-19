@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>Research</title>
+<!-- MathJax -->
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+	  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<!-- End MathJax -->
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-menu">
+<div class="menu-category"><center><img src="pictures/Northwestern.png" style="width:60%;"></center><br>HAO-JUN MICHAEL SHI</div>
+<div class="menu-item"><a href="index.html">HOME</a></div>
+<div class="menu-item"><a href="bio.html">BIOGRAPHY</a></div>
+<div class="menu-item"><a href="research.html" class="current">RESEARCH</a></div>
+<div class="menu-item"><a href="teaching.html">TEACHING</a></div>
+<div class="menu-item"><a href="https://scholar.google.com/citations?user=U1efqpIAAAAJ&hl=en">PUBLICATIONS</a></div>
+<div class="menu-item"><a href="https://github.com/hjmshi/">SOFTWARE</a></div>
+<div class="menu-item"><a href="resume.pdf">RESUME</a></div>
+</td>
+<td id="layout-content">
+<div id="toptitle">
+<h1>Research</h1>
+</div>
+<p>For a complete list of my previous projects and publications, please check out my <a href="https://scholar.google.com/citations?user=U1efqpIAAAAJ&amp;hl=en" target=&ldquo;blank&rdquo;>Google Scholar</a> page.</p>
+<h2>Research Overview</h2>
+<p>I am broadly interested in the areas of numerical optimization and its intersection with machine learning. An underlying theme of my dissertation research is the handling of noise within practical methods for nonlinear optimization, whether arising from the sampling of data, stochasticity within complex simulations, or inner computations. While most current optimization research has centered on theoretical advancements, my research is driven by a desire to develop algorithms to solve real-world problems. As a result, the ultimate goal of my work is to develop, maintain, and improve general-purpose open-source mathematical software. I always enjoy learning about new applications of optimization, and am open to engaging in interdisciplinary academic and industry collaborations. <br /></p>
+<p>I have also dabbled in various other fun topics during my undergraduate and graduate studies, including ground motion modeling, quantized compressed sensing, coordinate descent methods, and deep learning-based recommendation systems. </p>
+<h3>Stochastic Optimization for Deep Learning</h3>
+<p>Deep learning pervades many of the recent breakthroughs in artificial intelligence, including computer vision, speech recognition, and natural language processing. These methods are inspired by biological neural networks - populations of neurons that transmit signals to each other when activated. Based on this biological inspiration, researchers have designed <i>artificial neural network models</i> that mimic this behavior by interleaving compositions of linear and nonlinear functions, where each linear function represents the connections between consecutive layers of artificial neurons and the nonlinear function (applied component-wise) represents the activation of each neuron. After passing these models through a loss function, which describes the goodness-of-fit between a model's predicted value and true value, we obtain a highly non-convex and non-smooth optimization problem that is immensely difficult to optimize efficiently. These problems are typically posed as a stochastic optimization problem defined as </p>
+<p style="text-align:center">
+\[ \min_{w \in \mathbb{R}^d} \mathbb{E}_{(x, y) \sim \mathcal{X} \times \mathcal{Y}} [\ell(m(w; x), y)] \]
+</p><p>where \(w\) are the neural network parameters, \(m(w; x)\) is the neural network, \(\ell(\cdot, \cdot)\) is the loss function, and the expectation is taken over the probability distribution \(\mathcal{X} \times \mathcal{Y}\) which represents the data distribution. <br /></p>
+<p>Despite many breakthroughs in the development of deep learning models, the de facto method for training neural networks has remained the stochastic gradient (SG) method and its variants. Due to its use of small batch sizes in a sequential manner, the SG method suffers from the lack of opportunities for parallelism and the need to perform extensive hyperparameter tuning (such as the steplength and batch size). I am interested in developing stochastic optimization algorithms for training deep neural networks that are scalable, parameter-free, and parallelizable. </p>
+<p><b>Projects</b></p>
+<ol>
+<li><p><a href="https://arxiv.org/abs/1802.05374" target=&ldquo;blank&rdquo;>A Progressive Batching L-BFGS Method for Machine Learning</a>. <br />
+Authors: <a href="https://sites.google.com/view/raghub/home" target=&ldquo;blank&rdquo;>Raghu Bollapragada</a>, <a href="https://sites.google.com/site/dheevatsa/home" target=&ldquo;blank&rdquo;>Dheevatsa Mudigere</a>, <a href="http://users.iems.northwestern.edu/~nocedal/" target=&ldquo;blank&rdquo;>Jorge Nocedal</a>, <a href="https://hjmshi.github.io/" target=&ldquo;blank&rdquo;>Hao-Jun Michael Shi</a>, and <a href="https://www.linkedin.com/in/pingtakpetertang/" target=&ldquo;blank&rdquo;>Ping Tak Peter Tang</a>. <br />
+Accepted to the International Conference on Machine Learning (ICML) 2018.</p>
+</li>
+<li><p><a href="https://github.com/hjmshi/PyTorch-LBFGS" target=&ldquo;blank&rdquo;>PyTorch-LBFGS</a>. <br />
+Authors: <a href="https://hjmshi.github.io/" target=&ldquo;blank&rdquo;>Hao-Jun Michael Shi</a> and <a href="https://sites.google.com/site/dheevatsa/home" target=&ldquo;blank&rdquo;>Dheevatsa Mudigere</a>. <br />
+A Python module implementing stochastic L-BFGS in PyTorch.</p>
+</li>
+</ol>
+<h3>Noisy Optimization</h3>
+<p>Unlike in pure supervised learning where noise arises from partial sampling of data, there are other settings in both machine learning and engineering where approximations are made in the objective function are made intentionally to ensure computational tractability. In these cases, the noise cannot be controlled by ensuring consistency between different samples. For example, in PDE-constrained optimization, the objective function often contains computational noise created by an inexact linear system solver or adaptive grids. Other stochastic errors could arise from intermediate Monte Carlo simulations. Error also can result from finite-difference, interpolation, or Gaussian smoothing approximations to the gradient in derivative-free optimization. <br /></p>
+<p>In this case, known optimization methods need to be  in light of more general assumptions on the noise in the function and gradient. For example, we may assume that we want to minimize some true function</p>
+<p style="text-align:center">
+\[ \min_{x \in \mathbb{R}^n} \phi(x) \]
+</p><p>while only having access to noisy function and gradient evaluations </p>
+<p style="text-align:center">
+\[ f(x) = \phi(x) + \epsilon(x) \]
+</p><p style="text-align:center">
+\[ g(x) = \nabla \phi(x) + e(x) \]
+</p><p>where we assume the noise is bounded, i.e. \(|\epsilon(x)| \leq \epsilon_f\) and \(\|e(x)\| \leq \epsilon_g\). 
+I am interested in improving existing optimization algorithms and developing new algorithms that are capable of handling more generic structures of noise. </p>
+<p><b>Projects</b></p>
+<ol>
+<li><p><a href="https://arxiv.org/abs/2010.04352" target=&ldquo;blank&rdquo;>A Noise-Tolerant Quasi-Newton Algorithm for Unconstrained Optimization</a>. <br />
+Authors: <a href="https://hjmshi.github.io/" target=&ldquo;blank&rdquo;>Hao-Jun Michael Shi</a>, <a href="https://www.linkedin.com/in/yuchen-xie-54302311b/" target=&ldquo;blank&rdquo;>Yuchen Xie</a>, <a href="https://home.cs.colorado.edu/~richard/" target=&ldquo;blank&rdquo;>Richard Byrd</a>, and <a href="http://users.iems.northwestern.edu/~nocedal/" target=&ldquo;blank&rdquo;>Jorge Nocedal</a>. <br />
+Submitted.</p>
+</li>
+</ol>
+<h3>Derivative-Free Optimization</h3>
+<p>Derivative-free optimization is an area of optimization where the gradient and Hessian are assumed to be unavailable. Problems of this form arise in many settings, including but not limited to hyperparameter tuning (of neural networks or other algorithms), engineering and circuit design, and molecular geometry. The function evaluations are typically noisy and expensive. Numerous algorithms have been developed for derivative-free optimization: direct search methods, the Nelder-Mead simplex method, model-based trust-region methods, and most recently, Bayesian optimization methods. <br /></p>
+<p>I have devoted my effort so far towards investigating an alternative hypothesis: that finite-difference methods, if performed correctly, are competitive against leading derivative-free optimization methods even for noisy problems. In particular, finite-differencing, when used in conjunction with existing nonlinear optimization codes, are competitive in terms of function evaluations against leading derivative-free methods even for noisy functions while offering greater opportunities for parallelism.</p>
+<p><b>Projects</b></p>
+<ol>
+<li><p>On the Numerical Performance of Derivative-Free Optimization Methods Based on Finite-Difference Approximations. <br />
+Authors: <a href="https://hjmshi.github.io/" target=&ldquo;blank&rdquo;>Hao-Jun Michael Shi</a>, <a href="https://www.linkedin.com/in/qiming-melody-xuan-364448a8/" target=&ldquo;blank&rdquo;>Melody Qiming Xuan</a>, <a href="https://dl.acm.org/profile/81436601938" target=&ldquo;blank&rdquo;>Figen Oztoprak</a>, and <a href="http://users.iems.northwestern.edu/~nocedal/" target=&ldquo;blank&rdquo;>Jorge Nocedal</a>. <br />
+In preparation.</p>
+</li>
+<li><p>Adaptive Finite-Differencing Methods for High-Accuracy Noisy Derivative-Free Optimization. <br />
+Authors: <a href="https://hjmshi.github.io/" target=&ldquo;blank&rdquo;>Hao-Jun Michael Shi</a>, <a href="https://www.linkedin.com/in/yuchen-xie-54302311b/" target=&ldquo;blank&rdquo;>Yuchen Xie</a>, <a href="https://www.linkedin.com/in/qiming-melody-xuan-364448a8/" target=&ldquo;blank&rdquo;>Melody Qiming Xuan</a>, and <a href="http://users.iems.northwestern.edu/~nocedal/" target=&ldquo;blank&rdquo;>Jorge Nocedal</a>. <br />
+In preparation. </p>
+</li>
+</ol>
+<div id="footer">
+<div id="footer-text">
+CSS by Charlotte Abrahamson and Hao-Jun Michael Shi. Page generated 2021-01-18 23:20:12 CST, by <a href="https://github.com/wsshin/jemdoc_mathjax" target="blank">jemdoc+MathJax</a>.
+</div>
+</div>
+</td>
+</tr>
+</table>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-101440282-1', 'auto');
+  ga('send', 'pageview');
+</script>
+</body>
+</html>
