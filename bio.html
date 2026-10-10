@@ -1,109 +1,170 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<link rel="stylesheet" href="jemdoc.css" type="text/css" />
-<title>Biography</title>
-<!-- MathJax -->
-<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-	  TeX: { equationNumbers: { autoNumber: "AMS" } }
-});
-</script>
-<!-- End MathJax -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biography — Hao-Jun Michael Shi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FBF9F6; --ink:#211C24; --muted:#6E6473; --accent:#401F68; --accent-soft:rgba(64,31,104,.065);
+    --rule:#E8E1DC; --card:#FFFFFF;
+    --sans:'Inter',-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    --serif:'Fraunces',Georgia,'Times New Roman',serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased;}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(64,31,104,.28);transition:border-color .15s ease,color .15s ease;}
+  a:hover{color:#5B2D97;border-bottom-color:#5B2D97;}
+  .wrap{max-width:820px;margin:0 auto;padding:0 24px;}
+
+  /* Nav */
+  nav{border-bottom:1px solid var(--rule);background:rgba(251,249,246,.92);position:sticky;top:0;z-index:10;backdrop-filter:blur(6px);}
+  nav .wrap{display:flex;justify-content:space-between;align-items:center;column-gap:44px;min-height:58px;padding-top:8px;padding-bottom:8px;}
+  .brand{font-family:var(--serif);font-weight:600;font-size:1.05rem;letter-spacing:.01em;border:none;color:var(--ink);}
+  .brand:hover{color:var(--accent);}
+  .navlinks{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px 20px;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;}
+  .navlinks a{border:none;color:var(--muted);}
+  .navlinks a:hover{color:var(--accent);}
+  .navlinks a.current{color:var(--accent);border-bottom:1px solid var(--accent);}
+  .more{font-size:.92rem;}
+  .pagetitle{font-family:var(--serif);font-weight:500;font-size:2rem;letter-spacing:-.01em;padding:52px 0 6px;}
+  .pagesub{color:var(--muted);font-size:.95rem;margin-bottom:8px;}
+
+  /* Hero */
+  .hero{display:grid;grid-template-columns:1fr 200px;gap:48px;align-items:center;padding:64px 0 40px;}
+  .hero h1{font-family:var(--serif);font-weight:500;font-size:2.65rem;line-height:1.12;letter-spacing:-.01em;}
+  .hero h1 em{font-style:italic;color:var(--accent);}
+  .role{margin-top:14px;font-size:1.05rem;color:var(--ink);font-weight:500;}
+  .path{margin-top:6px;font-size:.92rem;color:var(--muted);line-height:1.6;}
+  .lede{margin-top:18px;color:#453C4E;max-width:34rem;}
+  .hero-links{margin-top:22px;display:flex;gap:20px;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;}
+  .hero-links a{border:none;}
+  .hero img{width:200px;height:200px;object-fit:cover;border-radius:50%;border:1px solid var(--rule);box-shadow:0 8px 30px rgba(64,31,104,.12);justify-self:end;}
+
+  /* Sections */
+  section{padding:34px 0 6px;}
+  .kicker{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:8px;}
+  h2{font-family:var(--serif);font-weight:500;font-size:1.55rem;padding-bottom:12px;border-bottom:1px solid var(--rule);margin-bottom:20px;}
+  p+p{margin-top:12px;}
+  .verse{margin-top:22px;padding:4px 0 4px 18px;border-left:2px solid var(--accent);font-family:var(--serif);font-style:italic;font-size:1.02rem;color:#4A3F57;}
+  .verse span{display:block;margin-top:4px;font-size:.82rem;font-style:normal;font-family:var(--sans);color:var(--muted);letter-spacing:.04em;}
+
+  /* Pills */
+  .pills{display:flex;flex-wrap:wrap;gap:9px;}
+  .pill{font-size:.85rem;padding:6px 14px;border:1px solid var(--rule);border-radius:999px;background:var(--card);color:var(--ink);}
+  .pill strong{color:var(--accent);font-weight:600;}
+
+  /* News */
+  .news{list-style:none;}
+  .news li{display:grid;grid-template-columns:86px 1fr;gap:18px;padding:10px 0;border-bottom:1px dashed var(--rule);}
+  .news li:last-child{border-bottom:none;}
+  .news time{font-size:.8rem;font-weight:600;letter-spacing:.08em;color:var(--accent);text-transform:uppercase;padding-top:3px;}
+  .news p{color:#3D3547;}
+
+  /* Publications */
+  .pub{padding:13px 0;border-bottom:1px solid var(--rule);}
+  .pub:last-child{border-bottom:none;}
+  .pub .venue{float:right;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:3px 10px;border-radius:999px;margin-left:14px;}
+  .pub .title{font-weight:600;color:var(--ink);}
+  .pub .authors{font-size:.9rem;color:var(--muted);margin-top:2px;}
+  .pub .plinks{font-size:.8rem;margin-top:3px;}
+  .pub .plinks a{border-bottom:none;font-weight:600;letter-spacing:.05em;}
+
+  /* Software / Students / Education */
+  .sw{padding:11px 0;border-bottom:1px solid var(--rule);}
+  .sw:last-child{border-bottom:none;}
+  .sw .name{font-weight:600;}
+  .row{display:grid;grid-template-columns:1fr auto;gap:6px 18px;padding:9px 0;border-bottom:1px solid var(--rule);}
+  .row:last-child{border-bottom:none;}
+  .row .who{font-weight:600;}
+  .row .meta{color:var(--muted);font-size:.92rem;}
+  .row .term{font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);white-space:nowrap;padding-top:4px;}
+  .next{color:var(--muted);font-size:.9rem;}
+  .next b{color:var(--ink);font-weight:600;}
+
+#speaker-bio p{font-size:.93rem;line-height:1.6;color:#453C4E;}
+  footer{margin-top:48px;border-top:1px solid var(--rule);padding:28px 0 44px;color:var(--muted);font-size:.88rem;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+  footer a{border:none;}
+
+  @media (max-width:640px){
+    nav .wrap{flex-direction:column;align-items:flex-start;height:auto;padding-top:12px;padding-bottom:12px;gap:8px;}
+    .brand{font-size:1rem;}
+    .navlinks{display:flex;flex-wrap:wrap;gap:8px 18px;}
+    .hero{grid-template-columns:1fr;gap:28px;padding-top:44px;}
+    .hero img{justify-self:start;width:148px;height:148px;}
+    .hero h1{font-size:2.1rem;}
+    .news li{grid-template-columns:1fr;gap:2px;}
+    .row{grid-template-columns:1fr;}
+    .row .term{padding-top:0;}
+  }
+</style>
 </head>
 <body>
-<table summary="Table for page layout." id="tlayout">
-<tr valign="top">
-<td id="layout-menu">
-<div class="menu-category"><br>HAO-JUN MICHAEL SHI</div>
-<div class="menu-item"><a href="index.html">HOME</a></div>
-<div class="menu-item"><a href="bio.html" class="current">BIOGRAPHY</a></div>
-<div class="menu-item"><a href="https://scholar.google.com/citations?user=U1efqpIAAAAJ&hl=en">PUBLICATIONS</a></div>
-<div class="menu-item"><a href="https://github.com/hjmshi/">SOFTWARE</a></div>
-<div class="menu-item"><a href="CV.pdf">CURRICULUM&nbsp;VITAE</a></div>
-</td>
-<td id="layout-content">
-<div id="toptitle">
-<h1>Biography</h1>
-<div id="subtitle"></div>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="./index.html">Hao-Jun Michael Shi</a>
+    <div class="navlinks">
+      <a href="./index.html">Home</a><a href="./bio.html" class="current">Bio</a><a href="./students.html">Students</a><a href="https://scholar.google.com/citations?user=U1efqpIAAAAJ&hl=en">Publications</a><a href="https://github.com/hjmshi/">Software</a><a href="./CV.pdf">CV</a><a href="./highlights.html">Highlights</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <h1 class="pagetitle">Biography</h1>
+
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="row"><div><span class="who">Ph.D., Industrial Engineering and Management Sciences</span> <span class="meta">— Northwestern University</span><div class="meta" style="margin-top:3px">Dissertation: “Methods for Stochastic, Noisy, and Derivative-Free Optimization.” Advisor: <a href="http://users.iems.northwestern.edu/~nocedal/">Jorge Nocedal</a>.</div></div><span class="term">2021</span></div>
+    <div class="row"><div><span class="who">Management for Scientists and Engineers Certificate</span> <span class="meta">— Kellogg School of Management, Northwestern University</span></div><span class="term">2020</span></div>
+    <div class="row"><div><span class="who">M.S., Industrial Engineering and Management Sciences</span> <span class="meta">— Northwestern University</span></div><span class="term">2017</span></div>
+    <div class="row"><div><span class="who">B.S., Applied Mathematics</span> <span class="meta">— UCLA, College and Departmental Honors</span></div><span class="term">2016</span></div>
+  </section>
+
+  <section id="positions">
+    <h2>Industry Experience</h2>
+    <div class="row"><div><span class="who">Research Scientist</span> <span class="meta">— Meta</span><div class="meta" style="margin-top:3px">FAIR, Meta Superintelligence Labs (2026–present)<br>Kernels &amp; Optimizations Team, Meta Superintelligence Labs (2025–2026)<br>AI and Systems Co-Design Team, Infrastructure (2021–2025)</div></div><span class="term">2021 – present</span></div>
+    <div class="row"><div><span class="who">Research Intern</span> <span class="meta">— Facebook</span><div class="meta" style="margin-top:3px">Advisor: <a href="https://sites.google.com/site/dheevatsa/home?pli=1&authuser=0">Dheevatsa Mudigere</a>. Peers: <a href="https://www.linkedin.com/in/maxim-naumov">Maxim Naumov</a> and <a href="http://www.jiyanyang.com/">Jiyan Yang</a>.</div></div><span class="term">2019</span></div>
+  </section>
+
+  <section id="honors">
+    <h2>Honors &amp; Awards</h2>
+    <div class="row"><div><span class="who">1st Place (External Tuning Ruleset)</span> <span class="meta">— MLCommons AlgoPerf: Training Algorithms Benchmark Competition</span></div><span class="term">2024</span></div>
+    <div class="row"><div><span class="who">Top 5% Reviewer</span> <span class="meta">— International Conference on Machine Learning (ICML)</span></div><span class="term">2019</span></div>
+    <div class="row"><div><span class="who">Departmental Service Award</span> <span class="meta">— IEMS, Northwestern University</span></div><span class="term">2017, 2018</span></div>
+    <div class="row"><div><span class="who">Graduate Research Fellowship: Honorable Mention</span> <span class="meta">— National Science Foundation</span></div><span class="term">2016, 2017</span></div>
+    <div class="row"><div><span class="who">Walter P. Murphy Fellowship</span> <span class="meta">— Northwestern University</span></div><span class="term">2016</span></div>
+  </section>
+
+
+
+
+
+
+
+  <section id="speaker-bio">
+    <h2>Speaker Bio</h2>
+    <p>Hao-Jun Michael Shi is a Research Scientist at FAIR, Meta Superintelligence Labs. He obtained his B.S. degree in Applied Mathematics from the University of California, Los Angeles, and his Ph.D. in Industrial Engineering and Management Sciences from Northwestern University, where he was advised by <a href="http://users.iems.northwestern.edu/~nocedal/">Jorge Nocedal</a>. He works at the intersection of optimization and artificial intelligence, bridging theory and practice. Most recently, he has focused on scalable and distributed training algorithms for deep learning. He was one of the lead developers, with Tsung-Hsien Lee, of the open-source PyTorch implementation of the Distributed Shampoo optimizer, which won first place in the external tuning ruleset of the MLCommons AlgoPerf benchmark. He has previously contributed to stochastic, noisy, and derivative-free optimization, as well as recommender systems and embedding compression. He received the Walter P. Murphy Fellowship and the NSF Graduate Research Fellowship Honorable Mention in 2016 and 2017, and was named a top ICML reviewer in 2019.</p>
+  </section>
+
+  <footer id="contact">
+    <div>
+      <b style="color:var(--ink)">Contact</b><br>
+      <a href="mailto:hjmshi@gmail.com">hjmshi@gmail.com</a> ·
+      <a href="https://scholar.google.com/citations?user=U1efqpIAAAAJ&hl=en">Google Scholar</a> ·
+      <a href="https://github.com/hjmshi/">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/hjmshi/">LinkedIn</a> ·
+      <a href="./CV.pdf">Curriculum Vitae (PDF)</a>
+    </div>
+    <div><span style="font-size:.8rem;color:#A79CAF;">Website designed with Uri (Muse).</span></div>
+  </footer>
+
 </div>
-<h2>Education </h2>
-<table class="imgtable"><tr><td>
-<img src="pictures/Northwestern.png" alt="Northwestern seal" width="125px" />&nbsp;</td>
-<td align="left"><p><b>Northwestern University</b> <br />
-Ph.D. in Industrial Engineering and Management Sciences <br />
-<i>Advisor: <a href="http://users.iems.northwestern.edu/~nocedal/" target=&ldquo;blank&rdquo;>Jorge Nocedal</a></i> <br />
-<i>September 2016 - December 2021</i> <br />
-<br />
-Management for Scientists and Engineers Certificate <br />
-Kellogg School of Management <br />
-<i>June - August 2020</i> <br />
-<br />
-M.S. in Industrial Engineering and Management Sciences <br />
-<i>September 2016 - June 2017</i></p>
-</td></tr></table>
-<table class="imgtable"><tr><td>
-<img src="pictures/UCLA.png" alt="UCLA seal" width="125px" />&nbsp;</td>
-<td align="left"><p><b>University of California, Los Angeles</b> <br />
-B.S. in Applied Mathematics <br />
-<i>College and Departmental Honors</i> <br />
-<i>September 2012 - June 2016</i> </p>
-</td></tr></table>
-<p><br /></p>
-<h2>Work Experience</h2>
-<ul>
-<li><p><b>Meta Platforms Inc., AI and Systems Co-Design</b> <br />
-Research Scientist (August 2021 - Current)<br />
-Research Intern (January - May 2019)
-</p>
-</li>
-</ul>
-<h2>Students/Interns Advised</h2>
-<ul>
-<li><p><a href="https://www.linkedin.com/in/a-cai/" target=&ldquo;blank&rdquo;>Anna Cai</a> (Carnegie Mellon University, Summer 2023)</p>
-</li>
-<li><p><a href="https://www.linkedin.com/in/manish-kumar-5b31599a/" target=&ldquo;blank&rdquo;>Manish Kumar</a> (Northwestern University, Winter 2019) <br />
-Data Scientist at Microsoft
-</p>
-</li>
-</ul>
-<h2>Honors and Awards</h2>
-<ul>
-<li><p>ICML Top 5% Reviewer (2019)</p>
-</li>
-<li><p>NSF Graduate Research Fellowship: Honorable Mention (2016, 2017) </p>
-</li>
-<li><p>Walter P. Murphy Fellowship (2016 - 2017)</p>
-</li>
-<li><p>Departmental Service Award (2016 - 2017, 2017 - 2018)
-</p>
-</li>
-</ul>
-<h2>Software/Languages</h2>
-<p>Python, C++, Matlab, Fortran, AMPL, and Gurobi 
-</p>
-<h2>Related Packages</h2>
-<p>PyTorch, NumPy, SciPy, scikit-learn, Keras, and Tensorflow</p>
-<div id="footer">
-<div id="footer-text">
-CSS by Charlotte Abrahamson and Hao-Jun Michael Shi. Page generated 2023-08-28 16:49:36 PDT, by <a href="https://github.com/wsshin/jemdoc_mathjax" target="blank">jemdoc+MathJax</a>.
-</div>
-</div>
-</td>
-</tr>
-</table>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-101440282-1', 'auto');
-  ga('send', 'pageview');
-</script>
 </body>
 </html>
